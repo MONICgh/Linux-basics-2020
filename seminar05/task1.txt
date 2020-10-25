@@ -1,13 +1,137 @@
 # print your command here
 
-a. git init ...
+a. 
 
-b.
+git init october
+Initialized empty Git repository in /home/monic/Linux(I_semestr)/Linux-basics-2020/october/.git/
+
+
+b. 
+
+touch bio.md
+touch main.cpp
+Я написала в bio.md ручками: У человека меньше мускулов, чем у гусеницы.
+Я написала в main.cpp ручками: #include <iostream>
+
+using namespace std;
+
+int main(){
+
+	cout << "Hello!";
+	return 0;
+} 
+
+git add .
+git commit -m "random fact about caterpillar"
+[master (root-commit) e70945f] random fact about caterpillar
+ 2 files changed, 10 insertions(+)
+ create mode 100644 bio.md
+ create mode 100644 main.cpp
+
 
 c.
 
+touch Makefile
+Я написала в Makefile: 
+"
+SHELL := /bin/bash
+
+all: main.cpp clean
+
+build_main: main.cpp
+	g++ main.cpp -o a
+	
+run_main: build_main
+	./a
+	
+	
+clean:
+	rm a
+	
+.PHONY: clean
+"
+
+make
+g++ main.cpp -o a
+rm a
+
+git add .
+git commit -m "caterpillar make"
+[master bbc27b2] caterpillar make
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+ create mode 100644 Makefile
+
 d.
+
+echo "Когда горилла злится, она высовывает язык." >> bio.md
+git add .
+git commit -m "some information about gorilla"
+[master b94f0ec] some information about gorilla
+ 1 file changed, 1 insertion(+)
+
+echo "Молоко верблюда не свертывается." >> bio.md
+git add .
+git commit -m "some information about camel"
+[master 7a26611] some information about camel
+ 1 file changed, 1 insertion(+)
+
+echo "Корову можно вести вверх по лестнице, но не вниз." >> bio.md
+git add .
+git commit -m "some information about cow"
+[master 1c4a45a] some information about cow
+ 1 file changed, 1 insertion(+)
 
 e.
 
+git checkout e70945fba7fe88fea27215457ff5514653f23668
+Note: switching to 'e70945fba7fe88fea27215457ff5514653f23668'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at e70945f random fact about caterpillar
+
+
+git branch cmake
+git checkout cmake
+Switched to branch 'cmake'
+
+touch CMakeLists.txt
+В CMakeLists.txt:
+"
+cmake_minimum_required(VERSION 3.10)
+
+project(q)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(main.cpp)
+
+"
+
 f.
+
+git checkout master
+Switched to branch 'master'
+
+git add .
+git commit -m "merge cmake to master"
+[master e999618] merge cmake to master
+ 1 file changed, 8 insertions(+)
+ create mode 100644 CMakeLists.txt
+
+git branch -d cmake
+Deleted branch cmake (was e70945f).
+
